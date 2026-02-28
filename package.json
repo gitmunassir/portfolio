@@ -1,32 +1,11 @@
 {
-  "name": "munassir-portfolio",
+  "name": "portfolio",
   "version": "1.0.0",
-  "private": true,
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^4.7.1",
-    "react-scripts": "^5.0.1"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.17",
-    "postcss": "^8.4.33",
-    "tailwindcss": "^3.4.1"
-  },
+  "description": "MERN Portfolio with Admin Panel",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "install:all": "cd client && npm install && cd ../server && npm install",
+    "dev": "echo 'Run client: cd client && npm run dev' && echo 'Run server: cd server && npm run dev'",
+    "build": "cd client && npm run build",
+    "start": "cd client && npm start"
   }
 }
