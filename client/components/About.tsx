@@ -1,7 +1,14 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, HTMLMotionProps } from 'framer-motion';
 import { Award, MapPin, Calendar } from 'lucide-react';
+
+// Type alias for motion components with HTML props
+type MotionDivProps = HTMLMotionProps<'div'> & React.HTMLAttributes<HTMLDivElement>;
+
+const MotionDiv = ({ children, ...props }: MotionDivProps) => (
+  <motion.div {...props}>{children}</motion.div>
+);
 
 const stats = [
   { label: 'Adobe Certified', icon: Award, value: 'Professional' },
@@ -21,7 +28,7 @@ export default function About() {
   return (
     <section id="about" className="py-20 bg-card/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <MotionDiv
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -35,11 +42,11 @@ export default function About() {
             I'm a passionate developer specializing in building scalable eCommerce solutions
             with cutting-edge AI tools.
           </p>
-        </motion.div>
+        </MotionDiv>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left - Image/Stats */}
-          <motion.div
+          <MotionDiv
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -47,23 +54,22 @@ export default function About() {
           >
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {stats.map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="glass p-6 rounded-lg text-center"
-                >
+                <MotionDiv
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="glass p-6 rounded-lg text-center"
+            >
                   <stat.icon className="w-8 h-8 mx-auto mb-2 text-primary" />
                   <p className="font-semibold">{stat.value}</p>
                   <p className="text-sm text-muted-foreground">{stat.label}</p>
-                </motion.div>
+                </MotionDiv>
               ))}
             </div>
 
             {/* Certifications */}
-            <motion.div
+            <MotionDiv
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -75,11 +81,11 @@ export default function About() {
                 <Award className="w-6 h-6 text-yellow-500" />
                 <span>Adobe Certified Professional – Adobe Commerce</span>
               </div>
-            </motion.div>
-          </motion.div>
+            </MotionDiv>
+          </MotionDiv>
 
           {/* Right - Content */}
-          <motion.div
+          <MotionDiv
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -96,7 +102,7 @@ export default function About() {
 
             <div className="space-y-3">
               {highlights.map((highlight, index) => (
-                <motion.div
+                <MotionDiv
                   key={index}
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -106,10 +112,10 @@ export default function About() {
                 >
                   <div className="w-2 h-2 rounded-full bg-primary" />
                   <span className="text-muted-foreground">{highlight}</span>
-                </motion.div>
+                </MotionDiv>
               ))}
             </div>
-          </motion.div>
+          </MotionDiv>
         </div>
       </div>
     </section>

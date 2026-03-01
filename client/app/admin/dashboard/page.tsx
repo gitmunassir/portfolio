@@ -1,8 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, HTMLMotionProps } from 'framer-motion';
 import { FolderKanban, Wrench, Briefcase, MessageSquare, TrendingUp } from 'lucide-react';
+
+// Typed motion component to fix TypeScript className issue
+const MotionDiv = (props: HTMLMotionProps<'div'> & React.HTMLAttributes<HTMLDivElement>) => (
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  <motion.div {...(props as any)} />
+);
 
 interface Stats {
   projects: number;

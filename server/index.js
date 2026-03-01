@@ -40,14 +40,14 @@ app.use((err, req, res, next) => {
 });
 
 // Database connection
-const MONGODB_URI = 'mongodb+srv://mm04:ap22%40mo%23%40@atlascluster.6jjeuh7.mongodb.net/?appName=AtlasCluster&retryWrites=true&w=majority';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/portfolio';
 
 mongoose.connect(MONGODB_URI)
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log('MongoDB connection error:', err));
 
 // Start server
-const PORT = process.env.PORT || 5002;
+const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
